@@ -4,5 +4,5 @@ import android.content.Context
 
 object Image {
 
-    fun with(context: Context) = OverlayBuilder(context)
+    fun with(context: Context) = StikerBuilder(context)
 }

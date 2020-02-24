@@ -5,7 +5,7 @@ import android.graphics.Bitmap
 import android.view.View
 import id.pahlevikun.overlaying.generator.ImageGenerator
 
-class OverlayBuilder(private val context: Context) {
+class StikerBuilder(private val context: Context) {
 
     private var isSaveImage: Boolean = false
     private var imageName: String? = null
@@ -14,27 +14,27 @@ class OverlayBuilder(private val context: Context) {
     private var cornerSize: Float = 0f
     private var quality: Int = 100
 
-    fun setBackground(backgroundProperties: ImageProperties): OverlayBuilder {
+    fun setBackground(backgroundProperties: ImageProperties): StikerBuilder {
         this.backgroundProperties = backgroundProperties
         return this
     }
 
-    fun setOverlay(foregroundProperties: ImageProperties): OverlayBuilder {
+    fun setOverlay(foregroundProperties: ImageProperties): StikerBuilder {
         this.foregroundProperties = foregroundProperties
         return this
     }
 
-    fun setRoundedCorner(cornerSize: Float): OverlayBuilder {
+    fun setRoundedCorner(cornerSize: Float): StikerBuilder {
         this.cornerSize = cornerSize
         return this
     }
 
-    fun setQuality(quality: Int): OverlayBuilder {
+    fun setQuality(quality: Int): StikerBuilder {
         this.quality = quality
         return this
     }
 
-    fun saveImage(name: String? = null): OverlayBuilder {
+    fun saveImage(name: String? = null): StikerBuilder {
         this.isSaveImage = true
         this.imageName = name
         return this

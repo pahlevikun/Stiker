@@ -9,7 +9,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import id.pahlevikun.overlaying.Image
 import id.pahlevikun.overlaying.ImageProperties
-import id.pahlevikun.overlaying.OverlayBuilder
+import id.pahlevikun.overlaying.StikerBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 import java.io.FileNotFoundException
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         button_save.setOnClickListener { doSaveImage() }
         Image.with(this)
-        OverlayBuilder(this).buildAsBitmap()
+        StikerBuilder(this).buildAsBitmap()
     }
 
     private fun createImageI() {
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             DEFAULT_OVERLAY_WIDTH
         )
 
-        val a = OverlayBuilder(this)
+        val a = StikerBuilder(this)
             .setBackground(
                 ImageProperties(bitmapPolosan)
                     .setHeight(500)
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
             .saveImage()
             .buildAsBitmap()
 
-        val screenShot = OverlayBuilder(this).takeScreenShot(button_save)
+        val screenShot = StikerBuilder(this).takeScreenShot(button_save)
     }
 
     private fun doSaveImage() {
