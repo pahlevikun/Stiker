@@ -1,0 +1,2 @@
+include ':app', ':stiker'
+rootProject.name='Simple Image'
