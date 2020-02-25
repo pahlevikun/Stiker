@@ -1,25 +1,25 @@
-package id.pahlevikun.overlaying
+package id.pahlevikun.stiker
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.view.View
-import id.pahlevikun.overlaying.generator.ImageGenerator
+import id.pahlevikun.stiker.generator.ImageGenerator
 
-class StikerBuilder(private val context: Context) {
+class StikerBuilder internal constructor(private val context: Context) {
 
     private var isSaveImage: Boolean = false
     private var imageName: String? = null
-    private var backgroundProperties: ImageProperties? = null
-    private var foregroundProperties: ImageProperties? = null
+    private var backgroundProperties: StikerProperties? = null
+    private var foregroundProperties: StikerProperties? = null
     private var cornerSize: Float = 0f
     private var quality: Int = 100
 
-    fun setBackground(backgroundProperties: ImageProperties): StikerBuilder {
+    fun setBackground(backgroundProperties: StikerProperties): StikerBuilder {
         this.backgroundProperties = backgroundProperties
         return this
     }
 
-    fun setOverlay(foregroundProperties: ImageProperties): StikerBuilder {
+    fun putStiker(foregroundProperties: StikerProperties): StikerBuilder {
         this.foregroundProperties = foregroundProperties
         return this
     }

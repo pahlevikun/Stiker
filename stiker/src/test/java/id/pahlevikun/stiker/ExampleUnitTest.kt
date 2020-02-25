@@ -1,4 +1,4 @@
-package id.pahlevikun.overlaying
+package id.pahlevikun.stiker
 
 import org.junit.Test
 

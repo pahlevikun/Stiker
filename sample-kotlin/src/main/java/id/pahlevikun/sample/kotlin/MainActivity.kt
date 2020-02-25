@@ -7,10 +7,8 @@ import android.os.Bundle
 import android.os.Environment
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import id.pahlevikun.overlaying.Image
-import id.pahlevikun.overlaying.ImageProperties
-import id.pahlevikun.overlaying.StikerBuilder
-import id.pahlevikun.sample.R
+import id.pahlevikun.stiker.Stiker
+import id.pahlevikun.stiker.StikerProperties
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 import java.io.FileNotFoundException
@@ -31,8 +29,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         button_save.setOnClickListener { doSaveImage() }
-        Image.with(this)
-        StikerBuilder(this).buildAsBitmap()
     }
 
     private fun createImageI() {
@@ -46,41 +42,45 @@ class MainActivity : AppCompatActivity() {
                     color = Color.parseColor(DEFAULT_COLOR)
                 }
                 Canvas(this).drawBitmap(
-                    scaleCenterCrop(BitmapFactory.decodeResource(resources,
-                        R.drawable.belalang
-                    )),
+                    scaleCenterCrop(
+                        BitmapFactory.decodeResource(
+                            resources,
+                            R.drawable.belalang
+                        )
+                    ),
                     0f,
                     0f,
                     paint
                 )
             }
         val bitmapLogo = getResizedBitmap(
-            BitmapFactory.decodeResource(resources,
+            BitmapFactory.decodeResource(
+                resources,
                 R.drawable.gofood
             ),
             DEFAULT_OVERLAY_HEIGHT,
             DEFAULT_OVERLAY_WIDTH
         )
 
-        val a = StikerBuilder(this)
+        Stiker.with(this)
             .setBackground(
-                ImageProperties(bitmapPolosan)
+                StikerProperties(bitmapPolosan)
                     .setHeight(500)
                     .setWidth(500)
                     .keepScale(false)
             )
-            .setOverlay(
-                ImageProperties(bitmapLogo)
+            .putStiker(
+                StikerProperties(bitmapLogo)
                     .setHeight(250)
                     .setWidth(250)
-                    .setPosition(ImageProperties.Position.BOTTOM_LEFT)
+                    .setPosition(StikerProperties.Position.BOTTOM_LEFT)
                     .keepScale(true)
             )
             .setRoundedCorner(2f)
             .saveImage()
             .buildAsBitmap()
 
-        val screenShot = StikerBuilder(this).takeScreenShot(button_save)
+        val screenShot = Stiker.with(this).takeScreenShot(button_save)
     }
 
     private fun doSaveImage() {
@@ -94,16 +94,20 @@ class MainActivity : AppCompatActivity() {
                     color = Color.parseColor(DEFAULT_COLOR)
                 }
                 Canvas(this).drawBitmap(
-                    scaleCenterCrop(BitmapFactory.decodeResource(resources,
-                        R.drawable.belalang
-                    )),
+                    scaleCenterCrop(
+                        BitmapFactory.decodeResource(
+                            resources,
+                            R.drawable.belalang
+                        )
+                    ),
                     0f,
                     0f,
                     paint
                 )
             }
         val bitmapLogo = getResizedBitmap(
-            BitmapFactory.decodeResource(resources,
+            BitmapFactory.decodeResource(
+                resources,
                 R.drawable.gofood
             ),
             DEFAULT_OVERLAY_HEIGHT,

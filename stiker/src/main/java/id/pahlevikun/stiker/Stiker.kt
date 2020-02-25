@@ -1,8 +1,8 @@
-package id.pahlevikun.overlaying
+package id.pahlevikun.stiker
 
 import android.content.Context
 
-object Image {
+object Stiker {
 
     fun with(context: Context) = StikerBuilder(context)
 }

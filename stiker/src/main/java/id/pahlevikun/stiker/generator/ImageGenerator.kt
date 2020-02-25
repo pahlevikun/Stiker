@@ -1,14 +1,24 @@
-package id.pahlevikun.overlaying.generator
+package id.pahlevikun.stiker.generator
 
 import android.content.Context
 import android.graphics.*
 import android.media.ThumbnailUtils
 import android.util.TypedValue
 import android.view.View
+import id.pahlevikun.stiker.StikerProperties
 
 internal object ImageGenerator {
 
     private const val DEFAULT_COLOR = "#E8E6E8"
+
+    internal data class Data(
+        val imageName: String,
+        val shouldSaveImage: Boolean = false,
+        val quality: Int,
+        val cornerSize: Float,
+        val background: StikerProperties,
+        val foreground: StikerProperties
+    )
 
     internal fun takeScreenShot(view: View): Bitmap {
         val bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
@@ -113,4 +123,16 @@ internal object ImageGenerator {
             context.resources.displayMetrics
         )
     }
+
+    fun stickThem(data: Data): Bitmap? {
+        val backgroundImage = with(data.background) {
+            getResizedBitmap(bitmap, width, height)
+        }
+        val sticker = with(data.foreground) {
+            getResizedBitmap(bitmap, height, width)
+        }
+
+        return overlayBitmap(backgroundImage, sticker)
+    }
+
 }

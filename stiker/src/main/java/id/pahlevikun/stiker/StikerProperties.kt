@@ -1,9 +1,9 @@
-package id.pahlevikun.overlaying
+package id.pahlevikun.stiker
 
 import android.graphics.Bitmap
 import androidx.annotation.IntDef
 
-class ImageProperties constructor(internal val bitmap: Bitmap) {
+class StikerProperties constructor(internal val bitmap: Bitmap) {
     internal var width: Int =
         DEFAULT_WIDTH
     internal var height: Int =
@@ -13,22 +13,22 @@ class ImageProperties constructor(internal val bitmap: Bitmap) {
     internal var position: Int =
         Position.TOP_LEFT
 
-    fun setWidth(width: Int): ImageProperties {
+    fun setWidth(width: Int): StikerProperties {
         this.width = width
         return this
     }
 
-    fun setHeight(height: Int): ImageProperties {
+    fun setHeight(height: Int): StikerProperties {
         this.height = height
         return this
     }
 
-    fun setPosition(@Position position: Int): ImageProperties {
+    fun setPosition(@Position position: Int): StikerProperties {
         this.position = position
         return this
     }
 
-    fun keepScale(isKeepScale: Boolean): ImageProperties {
+    fun keepScale(isKeepScale: Boolean): StikerProperties {
         this.keepScale = isKeepScale
         return this
     }
