@@ -1,2 +1,2 @@
-include ':app', ':stiker'
+include ':sample-kotlin', ':stiker', ':sample-java'
 rootProject.name='Simple Image'
